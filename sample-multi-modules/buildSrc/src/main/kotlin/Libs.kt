@@ -20,6 +20,9 @@ object Libs {
 
     const val retrofit: String = "com.squareup.retrofit2:retrofit:_"
 
+    const val de_fayard_buildsrclibs_gradle_plugin: String =
+        "de.fayard.buildSrcLibs:de.fayard.buildSrcLibs.gradle.plugin:_"
+
     const val kotest_assertions_core: String = "io.kotest:kotest-assertions-core:_"
 
     const val kotest_assertions_json: String = "io.kotest:kotest-assertions-json:_"

@@ -31,4 +31,10 @@ refreshVersions {
         enable 'LIBS'
         disable 'GRADLE_UPDATES'
     }
+
+
+    rejectVersionIf {
+        versionKey != "version.kotlinx.coroutines" && candidate.stabilityLevel.isLessStableThan(current.stabilityLevel)
+    }
+
 }

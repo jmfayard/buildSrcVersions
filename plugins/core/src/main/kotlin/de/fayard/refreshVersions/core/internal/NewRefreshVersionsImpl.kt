@@ -52,6 +52,7 @@ internal suspend fun lookupVersionCandidates(
     return coroutineScope {
 
         val resultMode = RefreshVersionsConfigHolder.resultMode
+        val filter = RefreshVersionsConfigHolder.dependencyFilter
         val dependenciesWithVersionCandidatesAsync = dependencyVersionsFetchers.groupBy {
             it.moduleId
         }.map { (moduleId: ModuleId, versionFetchers: List<DependencyVersionsFetcher>) ->
@@ -63,6 +64,8 @@ internal suspend fun lookupVersionCandidates(
                 propertyName = propertyName,
                 dependencyVersionsFetchers = versionFetchers
             )
+            val selection =
+                DependencySelection(moduleId, Version(resolvedVersion), propertyName, Version(resolvedVersion))
             async {
                 DependencyWithVersionCandidates(
                     moduleId = moduleId,
@@ -70,7 +73,10 @@ internal suspend fun lookupVersionCandidates(
                     versionsCandidates = versionFetchers.getVersionCandidates(
                         currentVersion = Version(resolvedVersion),
                         resultMode = resultMode
-                    )
+                    ).filterNot {
+                        selection.candidate = it
+                        filter(selection)
+                    }
                 )
             }
         }

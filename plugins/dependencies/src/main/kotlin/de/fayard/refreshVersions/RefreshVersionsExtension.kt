@@ -1,6 +1,9 @@
 package de.fayard.refreshVersions
 
+import de.fayard.refreshVersions.core.DependencySelection
 import de.fayard.refreshVersions.core.FeatureFlag
+import de.fayard.refreshVersions.core.internal.RefreshVersionsConfigHolder
+import groovy.lang.Closure
 import org.gradle.api.Action
 import org.gradle.api.Incubating
 import java.io.File
@@ -28,7 +31,16 @@ open class RefreshVersionsExtension {
         extension.execute(FeatureFlagExtension())
     }
 
+    fun rejectVersionIf(filter: Closure<Boolean>) {
+        RefreshVersionsConfigHolder.dependencyFilter = {
+            filter.delegate = this
+            filter.call()
+        }
+    }
 
+    fun rejectVersionIf(filter: DependencySelection.() -> Boolean) {
+        RefreshVersionsConfigHolder.dependencyFilter = filter
+    }
 }
 
 open class FeatureFlagExtension {

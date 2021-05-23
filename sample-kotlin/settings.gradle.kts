@@ -27,6 +27,11 @@ refreshVersions {
     }
 
     extraArtifactVersionKeyRules(file("refreshVersions-extra-rules.txt"))
+
+    // Reject unstable versions unless the current version is also unstable
+    rejectVersionIf {
+        versionKey != "version.kotlinx.coroutines" && candidate.stabilityLevel.isLessStableThan(current.stabilityLevel)
+    }
 }
 
 gradleEnterprise {
