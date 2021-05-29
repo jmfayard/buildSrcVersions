@@ -31,3 +31,5 @@ refreshVersions {
 
 include("module1")
 include("module2")
+
+enableFeaturePreview("VERSION_CATALOGS")

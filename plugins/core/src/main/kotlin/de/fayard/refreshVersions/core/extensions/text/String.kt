@@ -37,12 +37,3 @@ internal fun String.substringUpTo(delimiter: Char, missingDelimiterValue: String
     val index = indexOf(delimiter)
     return if (index == -1) missingDelimiterValue else substring(0, index + 1)
 }
-
-/**
- * Returns a substring up to the first occurrence of [delimiter].
- * If the string does not contain the delimiter, returns [missingDelimiterValue] which defaults to the original string.
- */
-internal fun String.substringUpTo(delimiter: String, missingDelimiterValue: String = this): String {
-    val index = indexOf(delimiter)
-    return if (index == -1) missingDelimiterValue else substring(0, index + delimiter.length)
-}

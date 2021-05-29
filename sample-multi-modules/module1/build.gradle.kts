@@ -16,4 +16,5 @@ dependencies {
     implementation(kotlin("stdlib"))
     implementation(Square.okHttp3.okHttp)
     testImplementation("junit", "junit", "4.12")
+    implementation("com.github.javadev:okio:1.6.0")
 }

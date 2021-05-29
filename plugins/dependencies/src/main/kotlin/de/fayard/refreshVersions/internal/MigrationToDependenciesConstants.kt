@@ -1,47 +1,18 @@
 package de.fayard.refreshVersions.internal
 
-import de.fayard.refreshVersions.core.internal.*
+import de.fayard.refreshVersions.core.countDependenciesWithHardcodedVersions
+import de.fayard.refreshVersions.core.internal.RefreshVersionsConfigHolder
 import de.fayard.refreshVersions.core.internal.cli.AnsiColor
 import de.fayard.refreshVersions.core.internal.cli.CliGenericUi
-import kotlinx.coroutines.*
+import de.fayard.refreshVersions.core.shouldBeIgnored
+import kotlinx.coroutines.isActive
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
-import org.gradle.api.artifacts.ExternalDependency
 import kotlin.coroutines.coroutineContext
 
-@InternalRefreshVersionsApi
-fun Configuration.shouldBeIgnored(): Boolean {
-    return name.startsWith(prefix = "_internal") // Real-life example: _internal_aapt2_binary (introduced by AGP)
-        || name in ignoredConfigurationNames || name.startsWith('-')
-    //TODO: If unwanted configurations still get through, we can filter to known ones here, like
-    // implementation, api, compileOnly, runtimeOnly, kapt, plus test, MPP and MPP test variants.
-}
-
-private val ignoredConfigurationNames = listOf(
-    "kotlinCompilerPluginClasspath",
-    "kotlinKaptWorkerDependencies",
-    "lintClassPath"
-)
 
 //TODO: Ignore the following dependency: org.jetbrains.kotlin:kotlin-android-extensions-runtime
 
-@InternalRefreshVersionsApi
-fun Configuration.countDependenciesWithHardcodedVersions(
-    versionsMap: Map<String, String>,
-    versionKeyReader: ArtifactVersionKeyReader
-): Int = dependencies.count { dependency ->
-    dependency is ExternalDependency && dependency.hasHardcodedVersion(versionsMap, versionKeyReader)
-}
-
-@InternalRefreshVersionsApi
-fun Project.countDependenciesWithHardcodedVersions(versionsMap: Map<String, String>): Int {
-    val versionKeyReader = RefreshVersionsConfigHolder.versionKeyReader
-    return configurations.sumBy { configuration ->
-        if (configuration.shouldBeIgnored()) 0 else {
-            configuration.countDependenciesWithHardcodedVersions(versionsMap, versionKeyReader)
-        }
-    }
-}
 
 internal fun promptProjectSelection(rootProject: Project): Project? {
     require(rootProject == rootProject.rootProject) { "Expected a rootProject but got $rootProject" }

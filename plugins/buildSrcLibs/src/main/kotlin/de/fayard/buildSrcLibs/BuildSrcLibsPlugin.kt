@@ -11,14 +11,15 @@ class BuildSrcLibsPlugin : Plugin<Project> {
         project.tasks.register<BuildSrcLibsTask>(
             name = "buildSrcLibs"
         ) {
-            group = "help"
+            group = "refreshVersions"
             description = "Update buildSrc/src/main/kotlin/Libs.kt"
             outputs.upToDateWhen { false }
+            dependsOn("refreshVersionsMissingEntries")
         }
         project.tasks.register<DefaultTask>(
             name = "buildSrcVersions"
         ) {
-            group = "help"
+            group = "refreshVersions"
             description = "Update buildSrc/src/main/kotlin/Libs.kt"
             dependsOn("buildSrcLibs")
         }

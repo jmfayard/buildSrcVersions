@@ -6,7 +6,9 @@ import de.fayard.refreshVersions.core.extensions.gradle.isBuildSrc
 import de.fayard.refreshVersions.core.internal.*
 import de.fayard.refreshVersions.core.internal.resolveVersion
 import de.fayard.refreshVersions.core.internal.setupVersionPlaceholdersResolving
+import org.gradle.api.artifacts.ExternalDependency
 import org.gradle.api.initialization.Settings
+import org.gradle.api.internal.artifacts.dependencies.DefaultClientModule
 import org.gradle.kotlin.dsl.apply
 import org.gradle.tooling.UnsupportedVersionException
 import org.gradle.util.GradleVersion
@@ -144,7 +146,12 @@ private fun setupPluginsVersionsResolution(
                 pluginNamespace.startsWith("com.android") -> "plugin.android"
                 else -> "plugin.$pluginId"
             }
-            val version = resolveVersion(properties, versionKey) ?: return@eachPlugin
+            val version = resolveVersion(properties, versionKey)
+            if (version == null) {
+                val pluginVersion = requested.version ?: return@eachPlugin
+                UsedPluginsHolder.noteUnusedPlugin(pluginIdToDependency(pluginId, pluginVersion))
+                return@eachPlugin
+            }
             when {
                 pluginNamespace.startsWith("com.android") -> {
                     val dependencyNotation = "com.android.tools.build:gradle:$version"
@@ -165,3 +172,14 @@ private fun setupPluginsVersionsResolution(
         }
     }
 }
+
+fun pluginDependencyNotationToVersionKey(dependencyNotation: String): String? =
+    when {
+        dependencyNotation.startsWith("com.android") -> "plugin.android"
+        dependencyNotation.startsWith("org.jetbrains.kotlin") -> "version.kotlin"
+        dependencyNotation.endsWith(".gradle.plugin") -> "plugin." + dependencyNotation.removeSuffix(".gradle.plugin")
+        else -> null
+    }
+
+fun pluginIdToDependency(pluginId: String, version: String): ExternalDependency =
+    DefaultClientModule(pluginId, "$pluginId.gradle.plugin", version)

@@ -49,12 +49,17 @@ internal object SettingsPluginsUpdater {
         settingsFile: File,
         settingsPluginsUpdates: List<PluginWithVersionCandidates>
     ) {
+        val oldContent = settingsFile.readText()
+        val isKotlinDsl = settingsFile.name.endsWith(".kts")
         val newContent = updatedGradleSettingsFileContentWithAvailablePluginsUpdates(
-            fileContent = settingsFile.readText(),
-            isKotlinDsl = settingsFile.name.endsWith(".kts"),
+            fileContent = oldContent,
+            isKotlinDsl = isKotlinDsl,
             settingsPluginsUpdates = settingsPluginsUpdates
         )
-        settingsFile.writeText(newContent)
+        if (oldContent != newContent) {
+            settingsFile.writeText(newContent)
+            (if (isKotlinDsl) OutputFile.SETTINGS_GRADLE_KTS else OutputFile.SETTINGS_GRADLE).logFileWasModified()
+        }
     }
 
     internal fun updatedGradleSettingsFileContentWithAvailablePluginsUpdates(

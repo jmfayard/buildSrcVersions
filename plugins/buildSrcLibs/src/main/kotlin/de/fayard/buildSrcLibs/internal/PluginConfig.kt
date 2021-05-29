@@ -12,16 +12,6 @@ internal object PluginConfig {
 
     const val refreshVersionsUrl = "https://github.com/jmfayard/refreshVersions"
 
-    /**
-     * We don't want to use meaningless generic libs like Libs.core
-     *
-     * Found many inspiration for bad libs here https://developer.android.com/jetpack/androidx/migrate
-     * **/
-    val MEANING_LESS_NAMES: MutableList<String> = mutableListOf(
-        "common", "core", "testing", "runtime", "extensions",
-        "compiler", "migration", "db", "rules", "runner", "monitor", "loader",
-        "media", "print", "io", "collection", "gradle", "android"
-    )
 
     val INITIAL_GITIGNORE = """
         |.gradle/
@@ -57,23 +47,5 @@ internal object PluginConfig {
         |}
         """.trimMargin()
 
-    internal fun computeUseFqdnFor(
-        libraries: List<Library>,
-        configured: List<String>,
-        byDefault: List<String> = MEANING_LESS_NAMES
-    ): List<String> {
-        val groups = (configured + byDefault).filter { it.contains(".") }.distinct()
-        val depsFromGroups = libraries.filter { it.group in groups }.map { it.module }
-        val ambiguities = libraries.groupBy { it.module }.filter { it.value.size > 1 }.map { it.key }
-        return (configured + byDefault + ambiguities + depsFromGroups - groups).distinct().sorted()
-    }
 
-    internal fun escapeLibsKt(name: String): String {
-        val escapedChars = listOf('-', '.', ':')
-        return buildString {
-            for (c in name) {
-                append(if (c in escapedChars) '_' else c.toLowerCase())
-            }
-        }
-    }
 }

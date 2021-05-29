@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<lint>
-    <issue id="MissingPermission" severity="informational" />
-    <issue id="GradleDependency" severity="ignore" />
-    <issue id="GradlePluginVersion" severity="ignore" />
-</lint>

@@ -1,17 +1,28 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
+name: Feature request about: Suggest an idea for this project title: ''
+labels: ''
+assignees: ''
+
 ---
 
-- [ ] I have read the [guidelines for submitting issues](https://jmfayard.github.io/refreshVersions/contributing/submitting-issues/)
 
-## ⚠️ Is your feature request related to a problem? Please describe
+**Is your feature request related to a problem? Please describe.**
 <!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->
 
-## 💡 Describe the solution you'd like
+**Using the samples**
+
+If possible, fork the project and submit a change in the samples that demo what your idea would do differently
+
+- `$ git clone https://github.com/jmfayard/buildSrcVersions`
+- `$ cd sample-groovy` # or `sample-kotlin` or `sample-versionsOnlyMode`
+- change things and submit a pull-request
+
+**Describe the solution you'd like**
 <!-- A clear and concise description of what you want to happen. -->
 
-## 🤚 Do you want to develop this feature yourself?
-<!-- Put an `x` symbol into braces of desired choice. -->
-- [ ] Yes
-- [ ] No
+
+**Describe alternatives you've considered**
+<!-- A clear and concise description of any alternative solutions or features you've considered. -->
+
+**Additional context**
+<!-- Add any other context or screenshots about the feature request here. -->

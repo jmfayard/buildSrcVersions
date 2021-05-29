@@ -2,6 +2,7 @@ package de.fayard.refreshVersions.core.internal
 
 import org.gradle.api.artifacts.ArtifactRepositoryContainer
 import org.gradle.api.artifacts.Dependency
+import org.gradle.api.artifacts.ExternalDependency
 import org.gradle.api.internal.artifacts.dependencies.AbstractDependency
 
 internal object UsedPluginsHolder {
@@ -22,6 +23,16 @@ internal object UsedPluginsHolder {
         return usedPluginDependencies.asSequence().map {
             ConfigurationLessDependency(it.dependencyNotation) to it.repositories
         }
+    }
+
+    fun noteUnusedPlugin(dependency: ExternalDependency) {
+        synchronized(lock) {
+            unusedPlugins.add(dependency)
+        }
+    }
+
+    val unusedPlugins by RefreshVersionsConfigHolder.resettableDelegates.Lazy {
+        mutableListOf<ExternalDependency>()
     }
 
     private val lock = Any()
@@ -49,5 +60,7 @@ internal object UsedPluginsHolder {
         private val version = dependencyNotation.substringAfterLast(':').unwrappedNullableValue()
 
         private fun String.unwrappedNullableValue(): String? = if (this == "null") null else this
+
+        override fun toString() = "$group:$name:$version"
     }
 }
