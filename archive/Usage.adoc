@@ -1,0 +1,147 @@
+:imagesdir: img
+:sectanchors:
+
+= Usage
+
+== Table of contents
+
+* <<adding-dependencies, Adding dependencies>>
+** <<Built-in dependencies constants>>
+** <<Other dependencies>>
+* <<Updating the dependencies>>
+** <<Find available updates (aka. refreshVersions)>>
+** <<Apply updates>>
+** <<updating-example, Example>>
+
+[#adding-dependencies]
+== Adding dependencies
+
+[#adding-built-in-dependencies]
+=== Built-in dependencies constants
+
+refreshVersions provides read-to-use organized constants for
+select popular dependencies of the following ecosystems:
+- Kotlin Multiplatform
+- Kotlin/JVM
+- Android
+
+You can use them in any `build.gradle` or `build.gradle.kts` file.
+
+_That doesn't prevent you from using refreshVersions in a Gradle
+project that is not using Kotlin or is not an Android project._
+
+Here's an example of how it looks like in the IDE:
+
+image::dependencies_constants_autocomplete_1.png[]
+_No imports needed._
+
+image::dependencies_constants_autocomplete_2.png[]
+_Autocomplete in IDE for easy discoverability._
+
+
+You can see link:../plugins/dependencies/src/main/kotlin/dependencies/[all the dependency objects in this directory].
+
+All these dependency constants specify their version as the
+version placeholder (`_`), so refreshVersions can replace it
+seamlessly with the value defined in the `versions.properties` file.
+
+After adding a dependency that doesn't have its version specified
+in the `versions.properties` file yet, refreshVersions will
+edit it and put the most stable recent version in it on the next
+Gradle sync (or any other Gradle run).
+
+It will also put any less stable versions as comments,
+allowing you to quickly upgrade if needed.
+
+[#adding-gradle-plugins]
+=== Adding gradle plugins
+
+This section doesn't apply to plugins that are configured in a `buildscript` block
+(since these have their versions configured like regular dependencies),
+but only to those that are configured solely with a plugin id.
+
+To add such a plugin, do as usual, but do not specify the version in the `build.gradle` or
+`build.gradle.kts` file. Instead, set it up like so in the `versions.properties` file:
+
+[source,properties,subs=attributes]
+----
+plugin.the-id-of-the-plugin=1.0
+----
+
+where `the-id-of-the-plugin` is the actual id of the plugin, and `1.0` is replaced by
+the actual version you want to use.
+
+[#adding-other-dependencies]
+=== Other dependencies
+
+For dependencies that are not included in the provided constants,
+all you need to have them work with refreshVersions is to replace the
+version with the version placeholder (`_`),
+
+After adding a dependency that doesn't have its version specified
+in the `versions.properties` file yet, refreshVersions will
+edit it and put the most stable recent version in it on the next
+Gradle sync (or any other Gradle run).
+
+It will also put any less stable versions as comments,
+allowing you to quickly upgrade if needed.
+
+[#updating-dependencies]
+== Updating the dependencies
+
+Day-to-day usage of `refreshVersions` is done in two steps.
+
+First, you discover the available updates.
+Second, you apply the updates you want.
+
+(scroll down to see an example below)
+
+[#finding-updates]
+=== Find available updates (aka. refreshVersions)
+
+Run the `refreshVersions` gradle task on the root project:
+
+`./gradlew refreshVersions`
+
+_(It usually takes less than 10 seconds to execute on relatively big projects.)_
+
+Open the `versions.properties` file and see the available updates added as comments.
+
+[#applying-updates]
+=== Apply updates
+
+Applying updates can be done in the `versions.properties` file with just the keyboard:
+
+1. Put the caret before or after the `=` symbol on the available update line.
+2. While holding shift (for text selection), press the up arrow key until the version key.
+3. Press the backspace/delete key.
+4. If you're in an IDE, sync Gradle changes to see the updated dependencies.
+
+Note that checking for compatibility, regressions, and performing any required changes or migrations
+cannot be done by refreshVersions. This is your responsibility (shared with your tests and QA).
+
+[#updating-example]
+=== Example
+
+Because images speak better than thousands of words, here's an example with screenshots.
+
+_Note: kotlinx.coroutines latest releases at the time of that example are `1.3.7` and `1.3.7-1.4-M2`._
+
+image::versions.properties_step00.png[]
+_Step 0: Initially used version_
+
+image::versions.properties_step01.png[]
+_Step 1: Run the `refreshVersions` task to find updates_
+
+image::versions.properties_step02.png[]
+_Step 2: Replace the previous version with the update_
+
+
+_Tip: You can upgrade easily with just the keyboard.
+To so do, place the caret next to the equals sign (`=`) of the
+version you want to use, hold shift and press the up arrow key,
+and press the delete key to complete the upgrade._
+
+image::versions.properties_step03.png[]
+_Final step: Usual post-upgrade actions (check, migrate, commit, push, CI…)_
+

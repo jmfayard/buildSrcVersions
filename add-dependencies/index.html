@@ -1,0 +1,905 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Life is too short to google for dependencies and versions">
+      
+      
+      
+        <meta name="author" content="jmfayard LouisCAD">
+      
+      
+        <link rel="canonical" href="https://jmfayard.github.io/refreshVersions/add-dependencies/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.7">
+    
+    
+      
+        <title>Add Dependencies - gradle refreshVersions</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../app.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="white">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#add-dependencies" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="gradle refreshVersions" class="md-header__button md-logo" aria-label="gradle refreshVersions" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            gradle refreshVersions
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Add Dependencies
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/jmfayard/refreshVersions/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    refreshVersions
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="gradle refreshVersions" class="md-nav__button md-logo" aria-label="gradle refreshVersions" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    gradle refreshVersions
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/jmfayard/refreshVersions/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    refreshVersions
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        Setup
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Add Dependencies
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Add Dependencies
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#use-built-in-dependency-notations" class="md-nav__link">
+    Use built-in dependency notations
+  </a>
+  
+    <nav class="md-nav" aria-label="Use built-in dependency notations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wait-what-version-are-those-dependencies-using" class="md-nav__link">
+    Wait, what version are those dependencies using?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-gradle-plugins" class="md-nav__link">
+    Add Gradle plugins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-the-version-from-anywhere" class="md-nav__link">
+    Get the version from anywhere
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-built-in-dependency-notations" class="md-nav__link">
+    Non-built-in dependency notations
+  </a>
+  
+    <nav class="md-nav" aria-label="Non-built-in dependency notations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-buildsrclibs" class="md-nav__link">
+    Using buildSrcLibs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-package-search-from-jetbrains" class="md-nav__link">
+    Using Package Search from JetBrains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-gradle-7-versions-catalogs" class="md-nav__link">
+    Using Gradle 7+ Versions Catalogs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-librariesgradle-pattern" class="md-nav__link">
+    Using the libraries.gradle pattern
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../update-dependencies/" class="md-nav__link">
+        Update Dependencies
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration/" class="md-nav__link">
+        Migration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CHANGELOG/" class="md-nav__link">
+        Change Log
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Contributing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Contributing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Contributing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/before-you-contribute/" class="md-nav__link">
+        Before you contribute
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/improving-docs/" class="md-nav__link">
+        Improving docs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/submitting-issues/" class="md-nav__link">
+        Submitting issues
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/submitting-prs/dev-env/" class="md-nav__link">
+        Dev environment
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/submitting-prs/dev-process/" class="md-nav__link">
+        Development process
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/submitting-prs/dependency-notations-updates/" class="md-nav__link">
+        Dependency notations
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gradle-tips/" class="md-nav__link">
+        Bonus: Gradle tips and tricks
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#use-built-in-dependency-notations" class="md-nav__link">
+    Use built-in dependency notations
+  </a>
+  
+    <nav class="md-nav" aria-label="Use built-in dependency notations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wait-what-version-are-those-dependencies-using" class="md-nav__link">
+    Wait, what version are those dependencies using?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-gradle-plugins" class="md-nav__link">
+    Add Gradle plugins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-the-version-from-anywhere" class="md-nav__link">
+    Get the version from anywhere
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-built-in-dependency-notations" class="md-nav__link">
+    Non-built-in dependency notations
+  </a>
+  
+    <nav class="md-nav" aria-label="Non-built-in dependency notations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-buildsrclibs" class="md-nav__link">
+    Using buildSrcLibs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-package-search-from-jetbrains" class="md-nav__link">
+    Using Package Search from JetBrains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-gradle-7-versions-catalogs" class="md-nav__link">
+    Using Gradle 7+ Versions Catalogs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-librariesgradle-pattern" class="md-nav__link">
+    Using the libraries.gradle pattern
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/jmfayard/refreshVersions/edit/release/docs/add-dependencies.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="add-dependencies">Add dependencies<a class="headerlink" href="#add-dependencies" title="Permanent link">&para;</a></h1>
+<h2 id="use-built-in-dependency-notations">Use built-in dependency notations<a class="headerlink" href="#use-built-in-dependency-notations" title="Permanent link">&para;</a></h2>
+<p><a href="http://www.youtube.com/watch?v=VhYERonB8co" title="Gradle refreshVersions"><img alt="" src="../img/screencast.png" /></a></p>
+<p>refreshVersions provides read-to-use organized dependency notations for select
+popular libraries of the following ecosystems:</p>
+<ul>
+<li>Kotlin Multiplatform</li>
+<li>Kotlin/JVM</li>
+<li>Android</li>
+</ul>
+<p><em>That doesn’t prevent you from using refreshVersions in a Gradle project that is not using Kotlin or is not an Android project.</em></p>
+<p>You can use them in any <code>build.gradle</code> or <code>build.gradle.kts</code> file.</p>
+<p>Here&rsquo;s an example of how it looks like in the IDE:</p>
+<p><em>No imports needed.</em></p>
+<p><img alt="" src="../img/dependencies_constants_autocomplete_1.png" /></p>
+<p><em>Autocomplete in IDE for easy discoverability.</em></p>
+<p><img alt="" src="../img/dependencies_constants_autocomplete_2.png" /></p>
+<p>You can see <a href="https://github.com/jmfayard/refreshVersions/blob/main/plugins/dependencies/src/main/kotlin/dependencies">all the dependency objects in this directory</a>.</p>
+<h3 id="wait-what-version-are-those-dependencies-using">Wait, what version are those dependencies using?<a class="headerlink" href="#wait-what-version-are-those-dependencies-using" title="Permanent link">&para;</a></h3>
+<p>All these dependency notations specify their version as the version
+placeholder (<code>_</code>), so refreshVersions can replace them seamlessly with the corresponding
+value defined in the <code>versions.properties</code> file, via Gradle APIs.
+The same will work for your own, non-built-in dependencies if you use that same version placeholder.</p>
+<p>After adding a dependency that doesn&rsquo;t have its version specified in the
+<code>versions.properties</code> file yet, refreshVersions will edit it and put the
+most stable recent version in it on the next Gradle sync (or any other
+Gradle run).</p>
+<p>It will also put any less stable versions as comments, allowing you to
+quickly upgrade if needed.</p>
+<h2 id="add-gradle-plugins">Add Gradle plugins<a class="headerlink" href="#add-gradle-plugins" title="Permanent link">&para;</a></h2>
+<p>This section doesn&rsquo;t apply to plugins that are configured in a
+<code>buildscript</code> block (since these have their versions configured like
+regular dependencies), but only to those that are configured solely with
+a plugin id.</p>
+<p>To add such a plugin, do as usual, but do not specify the version in the
+<code>build.gradle</code> or <code>build.gradle.kts</code> file. Instead, set it up like so in
+the <code>versions.properties</code> file:</p>
+<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">versions.properties</label><div class="tabbed-content"></div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="na">plugin.com.apollographql.apollo</span><span class="o">=</span><span class="s">2.4.1</span>
+
+<span class="na">plugin.com.squareup.sqldelight</span><span class="o">=</span><span class="s">1.4.3</span>
+</code></pre></div>
+<p>Then you can omit the plugin version in all <code>build.gradle(.kts)</code> of your project:</p>
+<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">some-module/build.gradle.kts</label><div class="tabbed-content"></div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="n">plugins</span> <span class="p">{</span>
+    <span class="n">id</span><span class="p">(</span><span class="s">&quot;com.squareup.sqldelight&quot;</span><span class="p">)</span>
+    <span class="n">id</span><span class="p">(</span><span class="s">&quot;com.apollographql.apollo&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">some-module/build.gradle</label><div class="tabbed-content"></div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="n">plugins</span> <span class="o">{</span>
+    <span class="n">id</span> <span class="s1">&#39;com.squareup.sqldelight&#39;</span>
+    <span class="n">id</span> <span class="s1">&#39;com.apollographql.apollo&#39;</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>As you see, the convention is pretty simple. The key is the id of the plugin, prefixed by <code>plugin.</code>: <code>plugin.some.plugin.id</code> sets the version of the plugin of id <code>some.plugin.id</code>.</p>
+<h2 id="get-the-version-from-anywhere">Get the version from anywhere<a class="headerlink" href="#get-the-version-from-anywhere" title="Permanent link">&para;</a></h2>
+<p>In some cases, you might need to get the version defined in the <code>versions.properties</code> file in a Gradle script.
+For these cases, there&rsquo;s the <code>versionFor</code> function that takes either a version key, or a full dependency notation.</p>
+<p>Here&rsquo;s a usage example with Jetpack Compose in an Android project:</p>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">build.gradle.kts</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nn">de.fayard.refreshVersions.core.versionFor</span>
+
+<span class="p">...</span>
+
+<span class="n">composeOptions</span> <span class="p">{</span>
+    <span class="n">kotlinCompilerExtensionVersion</span> <span class="o">=</span> <span class="n">versionFor</span><span class="p">(</span><span class="n">AndroidX</span><span class="p">.</span><span class="na">compose</span><span class="p">.</span><span class="na">ui</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">build.gradle</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">static</span> <span class="n">de</span><span class="o">.</span><span class="na">fayard</span><span class="o">.</span><span class="na">refreshVersions</span><span class="o">.</span><span class="na">core</span><span class="o">.</span><span class="na">Versions</span><span class="o">.</span><span class="na">versionFor</span>
+
+<span class="o">...</span>
+
+<span class="n">composeOptions</span> <span class="o">{</span>
+    <span class="n">kotlinCompilerExtensionVersion</span> <span class="o">=</span> <span class="n">versionFor</span><span class="o">(</span><span class="n">AndroidX</span><span class="o">.</span><span class="na">compose</span><span class="o">.</span><span class="na">ui</span><span class="o">)</span>
+<span class="o">}</span>
+</code></pre></div>
+</div>
+</div>
+<p>Using <code>versionFor("version.androidx.compose.ui")</code> would also work, so long as <code>version.androidx.compose.ui</code> is defined in the <code>versions.properties</code> file.</p>
+<h2 id="non-built-in-dependency-notations">Non-built-in dependency notations<a class="headerlink" href="#non-built-in-dependency-notations" title="Permanent link">&para;</a></h2>
+<p>Generally speaking, so long as you have the version placeholder (<code>_</code>) in place of the version,
+refreshVersions will handle it.</p>
+<p>Below are some ways to deal with the dependency notations that are not built-in.</p>
+<h3 id="using-buildsrclibs">Using buildSrcLibs<a class="headerlink" href="#using-buildsrclibs" title="Permanent link">&para;</a></h3>
+<p>The Gradle task <code>buildSrcLibs</code> can be used to automatically generate a <code>Libs.kt</code> file in the <a href="https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:build_sources">buildSrc</a>, that will contain all the dependency notations curently used in your build.</p>
+<p>To use it, you need to enable it:</p>
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">settings.gradle.kts</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="n">plugins</span> <span class="p">{</span>
+    <span class="c1">// See https://jmfayard.github.io/refreshVersions</span>
+    <span class="n">id</span><span class="p">(</span><span class="s">&quot;de.fayard.refreshVersions&quot;</span><span class="p">)</span> <span class="n">version</span> <span class="s">&quot;0.10.1&quot;</span>
+<span class="p">}</span>
+
+<span class="n">refreshVersions</span> <span class="p">{</span>
+    <span class="n">enableBuildSrcLibs</span><span class="p">()</span> <span class="c1">// &lt;-- Add this</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">settings.gradle</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="n">plugins</span> <span class="o">{</span>
+    <span class="c1">// See https://jmfayard.github.io/refreshVersions</span>
+    <span class="n">id</span> <span class="s1">&#39;de.fayard.refreshVersions&#39;</span> <span class="n">version</span> <span class="s1">&#39;0.10.1&#39;</span>
+<span class="o">}</span>
+
+<span class="n">refreshVersions</span> <span class="o">{</span>
+    <span class="n">enableBuildSrcLibs</span><span class="o">()</span> <span class="c1">// &lt;-- Add this</span>
+<span class="o">}</span>
+</code></pre></div>
+</div>
+</div>
+<p>Then you can use the command <code>./gradlew buildSrcLibs</code> to generate accessors for your dependencies</p>
+<div class="highlight"><pre><span></span><code>$ ./gradlew buildSrcLibs
+&gt; Task :buildSrcLibs
+        new file:   buildSrc/build.gradle.kts
+        new file:   buildSrc/src/main/kotlin/Libs.kt
+</code></pre></div>
+<p>The generated file will look like this:</p>
+<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">buildSrc/src/main/kotlin/Libs.kt</label><div class="tabbed-content"></div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * Generated by `$ ./gradlew buildSrcLibs`</span>
+<span class="cm"> */</span>
+<span class="kd">object</span> <span class="nc">Libs</span> <span class="p">{</span>
+
+    <span class="kd">const</span> <span class="kd">val</span> <span class="nv">guava</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">&quot;com.google.guava:guava:_&quot;</span>
+
+    <span class="kd">const</span> <span class="kd">val</span> <span class="nv">guice</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">&quot;com.google.inject:guice:_&quot;</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p>Because this file uses the version placeholder (<code>_</code>), it is compatible with refreshVersions!</p>
+<p>Read more: <a href="https://jmfayard.github.io/refreshVersions/gradle-buildsrcversions">gradle buildSrcVersions</a>.</p>
+<h3 id="using-package-search-from-jetbrains">Using Package Search from JetBrains<a class="headerlink" href="#using-package-search-from-jetbrains" title="Permanent link">&para;</a></h3>
+<p>JetBrains offers the plugin <a href="https://plugins.jetbrains.com/plugin/12507-package-search"><strong>Package Search</strong></a>,
+it is compatible with both IntelliJ IDEA and Android Studio. It also has a website</p>
+<p>Package Search provides a nice UX to add a dependency:</p>
+<p><img alt="" src="../img/jetbrains_package_search_screenshot.png" /></p>
+<p>Can you use it with refreshVersions?</p>
+<p>Sure, just use the version placeholder (<code>_</code>).</p>
+<h3 id="using-gradle-7-versions-catalogs">Using Gradle 7+ Versions Catalogs<a class="headerlink" href="#using-gradle-7-versions-catalogs" title="Permanent link">&para;</a></h3>
+<p>Gradle 7 comes with its own feature for centralizing dependencies: <a href="https://docs.gradle.org/7.0-rc-1/userguide/platforms.html#sub:central-declaration-of-dependencies">Versions Catalogs</a>.</p>
+<p>With Versions Catalog, you have a file like <code>gradle/libs.versions.toml</code> where you can centralize all your dependencies and benefit from typesafe accessors in your <code>build.gradle[.kts]</code> file.</p>
+<p>Since the feature is incubating, you need to enable it explicitly in the project&rsquo;s <code>settings.gradle[.kts]</code> file:</p>
+<blockquote>
+<p><code>enableFeaturePreview("VERSION_CATALOGS")</code></p>
+</blockquote>
+<p>Does that work well with refreshVersions? Yes, as long as you use the version placeholder (<code>_</code>).</p>
+<div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">gradle/libs.versions.toml</label><div class="tabbed-content"></div>
+</div>
+<div class="highlight"><pre><span></span><code>[libraries]
+accompanist-coil =  &quot;com.google.accompanist:accompanist-coil:_&quot;
+accompanist-flowlayout = &quot;com.google.accompanist:accompanist-flowlayout:_&quot;
+accompanist-insets = &quot;com.google.accompanist:accompanist-insets:_&quot;
+...
+</code></pre></div>
+<p>In this configuration, the versions catalog centralizes the dependency notations, while refreshVersions takes care of setting and updating the versions.</p>
+<p>We have ideas to integrate Versions Catalogs deeper into refreshVersions, see <a href="https://github.com/jmfayard/refreshVersions/issues/333">this issue</a>.</p>
+<h3 id="using-the-librariesgradle-pattern">Using the libraries.gradle pattern<a class="headerlink" href="#using-the-librariesgradle-pattern" title="Permanent link">&para;</a></h3>
+<p>An older approach to centralize dependencies is to have a <code>libraries.gradle</code> file:</p>
+<div class="tabbed-set" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">libraries.gradle</label><div class="tabbed-content"></div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="n">ext</span><span class="o">.</span><span class="na">libraries</span> <span class="o">=</span> <span class="o">[</span> <span class="c1">// Groovy map literal</span>
+    <span class="nl">spring_core:</span> <span class="s2">&quot;org.springframework:spring-core:3.1&quot;</span><span class="o">,</span>
+    <span class="nl">junit:</span> <span class="s2">&quot;junit:junit:4.10&quot;</span>
+<span class="o">]</span>
+</code></pre></div>
+<div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">some-module/build.gradle</label><div class="tabbed-content"></div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="n">apply</span><span class="o">(</span><span class="n">from</span> <span class="o">=</span> <span class="s2">&quot;../libraries.gradle&quot;</span><span class="o">)</span>
+
+<span class="n">dependencies</span> <span class="o">{</span>
+    <span class="n">compile</span> <span class="n">libraries</span><span class="o">.</span><span class="na">spring_core</span>
+    <span class="n">testCompile</span> <span class="n">libraries</span><span class="o">.</span><span class="na">junit</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>Does that work with refreshVersions too? Yes, just use the version placeholder (<code>_</code>):</p>
+<div class="tabbed-set" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">libraries.gradle</label><div class="tabbed-content"></div>
+</div>
+<div class="highlight"><pre><span></span><code>ext.libraries = [ // Groovy map literal
+<span class="gd">-    spring_core: &quot;org.springframework:spring-core:3.1&quot;,</span>
+<span class="gi">+    spring_core: &quot;org.springframework:spring-core:_&quot;,</span>
+<span class="gd">-    junit: &quot;junit:junit:4.10&quot;</span>
+<span class="gi">+    junit: &quot;junit:junit:_&quot;</span>
+]
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../setup/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Setup" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Setup
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../update-dependencies/" class="md-footer__link md-footer__link--next" aria-label="Next: Update Dependencies" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Update Dependencies
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 jmfayard
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.b0710199.min.js", "version": {"gradle": 6.9, "refreshVersions": "0.10.1", "snapshot": "0.10.1-SNAPSHOT"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.76f349be.min.js"></script>
+      
+    
+  </body>
+</html>

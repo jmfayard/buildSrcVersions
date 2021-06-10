@@ -1,0 +1,888 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Life is too short to google for dependencies and versions">
+      
+      
+      
+        <meta name="author" content="jmfayard LouisCAD">
+      
+      
+        <link rel="canonical" href="https://jmfayard.github.io/refreshVersions/setup/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.7">
+    
+    
+      
+        <title>Setup - gradle refreshVersions</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../app.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="white">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#setup" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="gradle refreshVersions" class="md-header__button md-logo" aria-label="gradle refreshVersions" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            gradle refreshVersions
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Setup
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/jmfayard/refreshVersions/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    refreshVersions
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="gradle refreshVersions" class="md-nav__button md-logo" aria-label="gradle refreshVersions" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    gradle refreshVersions
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/jmfayard/refreshVersions/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    refreshVersions
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Setup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Setup
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#update-gradle-if-needed" class="md-nav__link">
+    Update Gradle (if needed)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-the-plugin" class="md-nav__link">
+    Add the plugin
+  </a>
+  
+    <nav class="md-nav" aria-label="Add the plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-you-have-a-buildsrc-module" class="md-nav__link">
+    If you have a buildSrc module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-you-use-groovy-dsl-ie-buildgradle-files-not-kts" class="md-nav__link">
+    If you use Groovy DSL, i.e. build.gradle files (not kts)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-you-have-a-compositeincluded-build" class="md-nav__link">
+    If you have a composite/included build
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-you-want-to-use-a-snapshot-version" class="md-nav__link">
+    If you want to use a snapshot version
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure-the-plugin" class="md-nav__link">
+    Configure the plugin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#earlier-versions" class="md-nav__link">
+    Earlier versions
+  </a>
+  
+    <nav class="md-nav" aria-label="Earlier versions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-you-are-upgrading-from-the-buildsrcversions-plugin" class="md-nav__link">
+    If you are upgrading from the buildSrcVersions plugin
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    Next steps
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../add-dependencies/" class="md-nav__link">
+        Add Dependencies
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../update-dependencies/" class="md-nav__link">
+        Update Dependencies
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration/" class="md-nav__link">
+        Migration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CHANGELOG/" class="md-nav__link">
+        Change Log
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Contributing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Contributing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Contributing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/before-you-contribute/" class="md-nav__link">
+        Before you contribute
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/improving-docs/" class="md-nav__link">
+        Improving docs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/submitting-issues/" class="md-nav__link">
+        Submitting issues
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/submitting-prs/dev-env/" class="md-nav__link">
+        Dev environment
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/submitting-prs/dev-process/" class="md-nav__link">
+        Development process
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/submitting-prs/dependency-notations-updates/" class="md-nav__link">
+        Dependency notations
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gradle-tips/" class="md-nav__link">
+        Bonus: Gradle tips and tricks
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#update-gradle-if-needed" class="md-nav__link">
+    Update Gradle (if needed)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-the-plugin" class="md-nav__link">
+    Add the plugin
+  </a>
+  
+    <nav class="md-nav" aria-label="Add the plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-you-have-a-buildsrc-module" class="md-nav__link">
+    If you have a buildSrc module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-you-use-groovy-dsl-ie-buildgradle-files-not-kts" class="md-nav__link">
+    If you use Groovy DSL, i.e. build.gradle files (not kts)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-you-have-a-compositeincluded-build" class="md-nav__link">
+    If you have a composite/included build
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-you-want-to-use-a-snapshot-version" class="md-nav__link">
+    If you want to use a snapshot version
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure-the-plugin" class="md-nav__link">
+    Configure the plugin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#earlier-versions" class="md-nav__link">
+    Earlier versions
+  </a>
+  
+    <nav class="md-nav" aria-label="Earlier versions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-you-are-upgrading-from-the-buildsrcversions-plugin" class="md-nav__link">
+    If you are upgrading from the buildSrcVersions plugin
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    Next steps
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/jmfayard/refreshVersions/edit/release/docs/setup.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h1>
+<p>This guide will help you set up refreshVersions in a Gradle project.</p>
+<h2 id="update-gradle-if-needed">Update Gradle (if needed)<a class="headerlink" href="#update-gradle-if-needed" title="Permanent link">&para;</a></h2>
+<p>Only Gradle 6.3+ is supported at the moment, because there were a lot of changes in dependencies management in Gradle 6, and other compatibility concerns. It also allows for a simpler setup for plugins for example.</p>
+<p>Updating Gradle is anyway usually a good idea. You get fewer bugs, more
+features, and faster builds.</p>
+<p>Run this command to update:</p>
+<div class="highlight"><pre><span></span><code>./gradlew wrapper --gradle-version <span class="m">6</span>.9
+</code></pre></div>
+<p>You should also try to update the Gradle plugins present in your build to the latest version. For example on an Android project, do update the version of the Gradle Android Plugin.</p>
+<p>The Gradle documentation has detailed migration guide if you are stuck:</p>
+<ul>
+<li>From Gradle 6+: <a href="https://docs.gradle.org/current/userguide/upgrading_version_6.html">https://docs.gradle.org/current/userguide/upgrading_version_6.html</a></li>
+<li>From Gradle 5.x: <a href="https://docs.gradle.org/current/userguide/upgrading_version_5.html">https://docs.gradle.org/current/userguide/upgrading_version_5.html</a></li>
+<li>From Gradle 4.x: <a href="https://docs.gradle.org/current/userguide/upgrading_version_4.html">https://docs.gradle.org/current/userguide/upgrading_version_4.html</a></li>
+</ul>
+<h2 id="add-the-plugin">Add the plugin<a class="headerlink" href="#add-the-plugin" title="Permanent link">&para;</a></h2>
+<p>Here is how to configure gradle refreshVersions:</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">settings.gradle.kts</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="n">plugins</span> <span class="p">{</span>
+    <span class="c1">// See https://jmfayard.github.io/refreshVersions</span>
+    <span class="n">id</span><span class="p">(</span><span class="s">&quot;de.fayard.refreshVersions&quot;</span><span class="p">)</span> <span class="n">version</span> <span class="s">&quot;0.10.1&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">settings.gradle</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="n">plugins</span> <span class="o">{</span>
+    <span class="c1">// See https://jmfayard.github.io/refreshVersions</span>
+    <span class="n">id</span> <span class="s1">&#39;de.fayard.refreshVersions&#39;</span> <span class="n">version</span> <span class="s1">&#39;0.10.1&#39;</span>
+<span class="o">}</span>
+</code></pre></div>
+</div>
+</div>
+<h3 id="if-you-have-a-buildsrc-module">If you have a buildSrc module<a class="headerlink" href="#if-you-have-a-buildsrc-module" title="Permanent link">&para;</a></h3>
+<p>If you use the <strong>buildSrc</strong> module and have dependencies declared in the <code>buildSrc/build.gradle[.kts]</code> file, you probably want to use refreshVersions there as well. The setup is the same:</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">buildSrc/settings.gradle.kts</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="n">pluginManagement</span> <span class="p">{</span>
+    <span class="n">plugins</span> <span class="p">{</span>
+        <span class="n">id</span><span class="p">(</span><span class="s">&quot;de.fayard.refreshVersions&quot;</span><span class="p">)</span> <span class="n">version</span> <span class="s">&quot;0.10.1&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">plugins</span> <span class="p">{</span>
+    <span class="n">id</span><span class="p">(</span><span class="s">&quot;de.fayard.refreshVersions&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">buildSrc/settings.gradle</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="n">pluginManagement</span> <span class="o">{</span>
+    <span class="n">plugins</span> <span class="o">{</span>
+        <span class="n">id</span> <span class="s1">&#39;de.fayard.refreshVersions&#39;</span> <span class="n">version</span> <span class="s1">&#39;0.10.1&#39;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">plugins</span> <span class="o">{</span>
+    <span class="n">id</span> <span class="s1">&#39;de.fayard.refreshVersions&#39;</span>
+<span class="o">}</span>
+</code></pre></div>
+</div>
+</div>
+<h3 id="if-you-use-groovy-dsl-ie-buildgradle-files-not-kts">If you use Groovy DSL, i.e. build.gradle files (not kts)<a class="headerlink" href="#if-you-use-groovy-dsl-ie-buildgradle-files-not-kts" title="Permanent link">&para;</a></h3>
+<p><strong>Auto-completion for dependency notations won&rsquo;t work out of the box.</strong></p>
+<p>A workaround is to configure the plugin in the <code>buildSrc</code> module (create the directory if it doesn&rsquo;t exist yet):</p>
+<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">buildSrc/settings.gradle</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="n">pluginManagement</span> <span class="o">{</span>
+    <span class="n">plugins</span> <span class="o">{</span>
+        <span class="n">id</span> <span class="s1">&#39;de.fayard.refreshVersions&#39;</span> <span class="n">version</span> <span class="s1">&#39;0.10.1&#39;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">plugins</span> <span class="o">{</span>
+    <span class="n">id</span> <span class="s1">&#39;de.fayard.refreshVersions&#39;</span>
+<span class="o">}</span>
+</code></pre></div>
+</div>
+</div>
+<h3 id="if-you-have-a-compositeincluded-build">If you have a composite/included build<a class="headerlink" href="#if-you-have-a-compositeincluded-build" title="Permanent link">&para;</a></h3>
+<p>Sharing used versions with included builds is not supported at the moment.</p>
+<p>If you need/want this feature, please vote with a 👍 on <a href="https://github.com/jmfayard/refreshVersions/issues/205">this issue</a>, subscribe to it, and tell us about your use case, to help us prioritize.</p>
+<h3 id="if-you-want-to-use-a-snapshot-version">If you want to use a snapshot version<a class="headerlink" href="#if-you-want-to-use-a-snapshot-version" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">settings.gradle.kts</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="n">pluginManagement</span> <span class="p">{</span>
+    <span class="n">repositories</span> <span class="p">{</span>
+        <span class="n">gradlePluginPortal</span><span class="p">()</span>
+        <span class="n">maven</span><span class="p">(</span><span class="s">&quot;https://s01.oss.sonatype.org/content/repositories/snapshots&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">plugins</span> <span class="p">{</span>
+    <span class="c1">// See https://jmfayard.github.io/refreshVersions</span>
+    <span class="n">id</span><span class="p">(</span><span class="s">&quot;de.fayard.refreshVersions&quot;</span><span class="p">)</span> <span class="n">version</span> <span class="s">&quot;0.10.1-SNAPSHOT&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">settings.gradle</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="n">pluginManagement</span> <span class="o">{</span>
+    <span class="n">repositories</span> <span class="o">{</span>
+        <span class="n">gradlePluginPortal</span><span class="o">()</span>
+        <span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="s1">&#39;https://s01.oss.sonatype.org/content/repositories/snapshots&#39;</span> <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="n">plugins</span> <span class="o">{</span>
+    <span class="c1">// See https://jmfayard.github.io/refreshVersions</span>
+    <span class="n">id</span> <span class="s1">&#39;de.fayard.refreshVersions&#39;</span> <span class="n">version</span> <span class="s1">&#39;0.10.1-SNAPSHOT&#39;</span>
+<span class="o">}</span>
+</code></pre></div>
+</div>
+</div>
+<h2 id="configure-the-plugin">Configure the plugin<a class="headerlink" href="#configure-the-plugin" title="Permanent link">&para;</a></h2>
+<p>There is no required configuration!</p>
+<p>There are some options which can be configured in the <code>refreshVersions { }</code> block.</p>
+<p>If you are curious about what are the available options, you can use auto-complete (you can also type <code>this.</code> before to filter the results).</p>
+<p><img width="854" src="https://user-images.githubusercontent.com/459464/117489731-41322200-af6e-11eb-8e5d-f3ba0e7b6070.png"></p>
+<h2 id="earlier-versions">Earlier versions<a class="headerlink" href="#earlier-versions" title="Permanent link">&para;</a></h2>
+<h3 id="if-you-are-upgrading-from-the-buildsrcversions-plugin">If you are upgrading from the buildSrcVersions plugin<a class="headerlink" href="#if-you-are-upgrading-from-the-buildsrcversions-plugin" title="Permanent link">&para;</a></h3>
+<p>Before refreshVersions, <a href="https://dev.to/jmfayard/better-dependency-management-in-android-studio-3-5-with-gradle-buildsrcversions-34e9">there was the plugin buildSrcVersions</a>.</p>
+<p>If your project is using it, remove all its configuration from the top <code>build.gradle[.kts]</code> file to avoid any clashes between the two plugins:</p>
+<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">build.gradle.kts</label><div class="tabbed-content"></div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="gd">-plugins {</span>
+<span class="gd">-    id(&quot;de.fayard.buildSrcVersions&quot;) version &quot;0.3.2&quot;</span>
+<span class="gd">-}</span>
+
+<span class="gd">-buildSrcVersions {</span>
+<span class="gd">-    someOption = &quot;somevalue&quot;</span>
+<span class="gd">-}</span>
+</code></pre></div>
+<p>Then, enable <code>buildSrcLibs</code> as such:</p>
+<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">settings.gradle.kts</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="n">plugins</span> <span class="p">{</span>
+    <span class="c1">// See https://jmfayard.github.io/refreshVersions</span>
+    <span class="n">id</span><span class="p">(</span><span class="s">&quot;de.fayard.refreshVersions&quot;</span><span class="p">)</span> <span class="n">version</span> <span class="s">&quot;0.10.1&quot;</span>
+<span class="p">}</span>
+
+<span class="n">refreshVersions</span> <span class="p">{</span>
+    <span class="n">enableBuildSrcLibs</span><span class="p">()</span> <span class="c1">// &lt;-- Add this</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">settings.gradle</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="n">plugins</span> <span class="o">{</span>
+    <span class="c1">// See https://jmfayard.github.io/refreshVersions</span>
+    <span class="n">id</span> <span class="s1">&#39;de.fayard.refreshVersions&#39;</span> <span class="n">version</span> <span class="s1">&#39;0.10.1&#39;</span>
+<span class="o">}</span>
+
+<span class="n">refreshVersions</span> <span class="o">{</span>
+    <span class="n">enableBuildSrcLibs</span><span class="o">()</span> <span class="c1">// &lt;-- Add this</span>
+<span class="o">}</span>
+</code></pre></div>
+</div>
+</div>
+<p>Read more: <a href="../gradle-buildsrcversions/">gradle buildSrcVersions</a>.</p>
+<h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<p>You did it! refreshVersions is now properly setup.</p>
+<p>Now, you might want to:</p>
+<ul>
+<li><a href="../migration/">Migrate/opt-in existing dependency declarations</a>, so the <code>refreshVersions</code> task can find available updates for you.</li>
+<li><a href="../add-dependencies/">Add new dependencies</a>.</li>
+<li><a href="../update-dependencies/">Update dependencies</a>.</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Overview
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../add-dependencies/" class="md-footer__link md-footer__link--next" aria-label="Next: Add Dependencies" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Add Dependencies
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 jmfayard
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.b0710199.min.js", "version": {"gradle": 6.9, "refreshVersions": "0.10.1", "snapshot": "0.10.1-SNAPSHOT"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.76f349be.min.js"></script>
+      
+    
+  </body>
+</html>

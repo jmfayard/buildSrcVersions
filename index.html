@@ -1,0 +1,823 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Life is too short to google for dependencies and versions">
+      
+      
+      
+        <meta name="author" content="jmfayard LouisCAD">
+      
+      
+        <link rel="canonical" href="https://jmfayard.github.io/refreshVersions/">
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.7">
+    
+    
+      
+        <title>gradle refreshVersions</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="app.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="white">
+  
+    
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gradle-refreshversions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="gradle refreshVersions" class="md-header__button md-logo" aria-label="gradle refreshVersions" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            gradle refreshVersions
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Overview
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/jmfayard/refreshVersions/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    refreshVersions
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="gradle refreshVersions" class="md-nav__button md-logo" aria-label="gradle refreshVersions" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    gradle refreshVersions
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/jmfayard/refreshVersions/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    refreshVersions
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        Overview
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-refreshversions" class="md-nav__link">
+    Why refreshVersions?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#centralize-your-dependencies-in-a-proper-file-format" class="md-nav__link">
+    Centralize your dependencies in a proper file format
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-magic" class="md-nav__link">
+    No Magic!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#look-up-for-updates-automatically" class="md-nav__link">
+    Look up for updates automatically
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#its-fast" class="md-nav__link">
+    It's fast!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-dependencies-quickly" class="md-nav__link">
+    Add dependencies quickly!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#try-it-out-with-zero-setup" class="md-nav__link">
+    Try it out with zero setup!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funding" class="md-nav__link">
+    Funding ❤️
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" class="md-nav__link">
+    Contributing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="setup/" class="md-nav__link">
+        Setup
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="add-dependencies/" class="md-nav__link">
+        Add Dependencies
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="update-dependencies/" class="md-nav__link">
+        Update Dependencies
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="migration/" class="md-nav__link">
+        Migration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CHANGELOG/" class="md-nav__link">
+        Change Log
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Contributing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Contributing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Contributing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contributing/before-you-contribute/" class="md-nav__link">
+        Before you contribute
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contributing/improving-docs/" class="md-nav__link">
+        Improving docs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contributing/submitting-issues/" class="md-nav__link">
+        Submitting issues
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contributing/submitting-prs/dev-env/" class="md-nav__link">
+        Dev environment
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contributing/submitting-prs/dev-process/" class="md-nav__link">
+        Development process
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contributing/submitting-prs/dependency-notations-updates/" class="md-nav__link">
+        Dependency notations
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="gradle-tips/" class="md-nav__link">
+        Bonus: Gradle tips and tricks
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-refreshversions" class="md-nav__link">
+    Why refreshVersions?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#centralize-your-dependencies-in-a-proper-file-format" class="md-nav__link">
+    Centralize your dependencies in a proper file format
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-magic" class="md-nav__link">
+    No Magic!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#look-up-for-updates-automatically" class="md-nav__link">
+    Look up for updates automatically
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#its-fast" class="md-nav__link">
+    It's fast!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-dependencies-quickly" class="md-nav__link">
+    Add dependencies quickly!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#try-it-out-with-zero-setup" class="md-nav__link">
+    Try it out with zero setup!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funding" class="md-nav__link">
+    Funding ❤️
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" class="md-nav__link">
+    Contributing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/jmfayard/refreshVersions/edit/release/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="gradle-refreshversions">Gradle refreshVersions<a class="headerlink" href="#gradle-refreshversions" title="Permanent link">&para;</a></h1>
+<p><a href="https://plugins.gradle.org/plugin/de.fayard.refreshVersions"><img alt="" src="https://img.shields.io/badge/refreshVersions-v0.10.1-orange" /></a>
+<a href="https://app.slack.com/client/T09229ZC6/CP5659EL9"><img alt="" src="https://img.shields.io/static/v1?label=kotlinlang&amp;message=gradle-refresh-versions&amp;color=brightgreen&amp;logo=slack" /></a>
+<a href="https://github.com/jmfayard/refreshVersions/pulls"><img alt="" src="https://img.shields.io/github/issues-pr-raw/jmfayard/refreshVersions" /></a>
+<a href="https://github.com/jmfayard/refreshVersions/blob/main/LICENSE.txt"><img alt="" src="https://img.shields.io/github/license/mashape/apistatus.svg" /></a></p>
+<blockquote>
+<p>Life is too short to google for dependencies and versions</p>
+</blockquote>
+<p><a href="http://www.youtube.com/watch?v=VhYERonB8co" title="Gradle refreshVersions"><img alt="" src="img/screencast.png" /></a></p>
+<h2 id="why-refreshversions">Why refreshVersions?<a class="headerlink" href="#why-refreshversions" title="Permanent link">&para;</a></h2>
+<p>Gradle multi-module projects are on the rise.</p>
+<p>At the same time, library vendors publish very modularized artifacts:</p>
+<ul>
+<li>On Android, the big fat support libraries are dead, and their replacement, <code>AndroidX</code>,
+contains more than 200 different dependencies, grouped in over 70 groups, each having its own version. (AndroidX is only a part of first-party dependencies for Android projects, and third party dependencies can add up.)</li>
+<li>On the server, many frameworks or library suites offer a high number of artifacts. That applies to Ktor, Spring, http4k and others. Again, that&rsquo;s not even counting third party dependencies.</li>
+</ul>
+<p>Both trends come with great technical benefits.</p>
+<p>However, they also make it much more tedious to find where to add and update your dependencies in all those <code>build.gradle[.kts]</code> files!</p>
+<p><em>We saw this make developers update the dependencies less and less often, effectively leading to legacy accumulation (a form of technical debt), or even projects abandon. Yes, that&rsquo;s sad.</em></p>
+<p><em><strong>Can we have our cake and eat it?</strong></em></p>
+<p>We firmly believe that yes, <strong>we can have the benefits of modularization without the hell of dependency management</strong>.</p>
+<p>So what does <code>gradle refreshVersions</code>?</p>
+<h2 id="centralize-your-dependencies-in-a-proper-file-format">Centralize your dependencies in a proper file format<a class="headerlink" href="#centralize-your-dependencies-in-a-proper-file-format" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="img/versions.properties.png" /></p>
+<p>Everyone who uses Gradle in a multi-modules environment
+has looked for a way to centralize all dependencies in one place.
+And there are solutions for that.
+Too many solutions in fact.
+Some put their versions in a variable <code>val retrofitVersion = 2.9.0</code>, others in <code>rootproject.ext</code>,
+others in a <code>libraries.gradle</code> file, others still in <code>buildSrc/src/main/Versions.kt</code>,
+and the list goes on and on!</p>
+<p>A problem common to all those solutions is that they store the versions
+<strong>in a turing-complete programming language</strong> (Groovy or Kotlin).
+Then people try to hack together regular expressions to read or modify those files.</p>
+<p>We think this is wrong!</p>
+<p>Instead, <strong>gradle refreshVersions</strong> stores all the versions in one place in a proper file format:
+Java Properties, like <a href="https://dev.to/jmfayard/configuring-gradle-with-gradle-properties-211k"><code>gradle.properties</code></a>.
+Just like npm&rsquo;s <em>package.json</em>, Maven&rsquo;s <em>pom.xml</em>, this file can be easily read and written by a computer program.
+Yes to better tooling!</p>
+<h2 id="no-magic">No Magic!<a class="headerlink" href="#no-magic" title="Permanent link">&para;</a></h2>
+<p>You wonder how this works?</p>
+<p>No black magic involved, we leverage Gradle public APIs that are designed to edit declared dependencies (<code>Configuration.withDependencies</code>, and <code>PluginManagement.resolutionStrategy</code>), and we edit the versions constraints there.
+The rest is just a set of conventions.</p>
+<p>Consider the example below:</p>
+<table>
+<thead>
+<tr>
+<th>Dependency notation</th>
+<th>Version key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>org.gradle:gradle-hello-world-plugin:_</td>
+<td>version.org.gradle..gradle-hello-world-plugin</td>
+</tr>
+<tr>
+<td>com.squareup.retrofit2:retrofit:_</td>
+<td>version.retrofit</td>
+</tr>
+<tr>
+<td>com.squareup.retrofit2:retrofit-adapter-xxx:_</td>
+<td>version.retrofit</td>
+</tr>
+<tr>
+<td>plugin with id &ldquo;com.squareup.sqldelight&rdquo;</td>
+<td>plugin.com.squareup.sqldelight</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>gradle refreshVersions works with <strong>an opt-in mechanism.</strong> It only manages dependencies where the version is set to be a placeholder, more specifically the underscore <code>_</code>, which, akin to Kotlin, here means that the version is not used, being instead set in the <code>versions.properties</code> file.</li>
+<li>gradle refreshVersions has a system of <strong><a href="https://github.com/jmfayard/refreshVersions/blob/main/plugins/dependencies/src/main/resources/refreshVersions-rules">rules</a></strong> that here, allows to set all Retrofit dependencies with the same version key <code>version.retrofit</code> , keeping things DRY.</li>
+</ul>
+<h2 id="look-up-for-updates-automatically">Look up for updates automatically<a class="headerlink" href="#look-up-for-updates-automatically" title="Permanent link">&para;</a></h2>
+<p>With this infrastructure being in place, the major feature of <strong>gradle refreshVersions</strong> is like its name suggests: <strong>It will look up for all available updates of the dependencies used in the project.</strong></p>
+<p>Simply run <code>$ ./gradlew refreshVersions</code> and you will see the available updates <strong>as comments</strong>:</p>
+<p><img alt="" src="img/versions.properties_step02.png" /></p>
+<p>Why as comment? Because while googling manually for available updates is a monkey job that is best done by a computer program, while <strong>deciding whether to upgrade or not is your job</strong> as a programmer.</p>
+<p>Read more: <a href="update-dependencies/">Update Dependencies</a></p>
+<h2 id="its-fast">It&rsquo;s fast!<a class="headerlink" href="#its-fast" title="Permanent link">&para;</a></h2>
+<p>The <a href="https://github.com/LouisCAD/kotlin-libraries-playground">Kotlin Libraries Playground</a> contains about 80 dependencies, and counting.</p>
+<p>How long would it take to search for all available updates?</p>
+<ul>
+<li>Well, if you do it manually: <em>enough to hate your life</em>.</li>
+<li>With the <a href="https://github.com/ben-manes/gradle-versions-plugin">gradle-versions-plugin</a> it will take about 2 minutes.</li>
+<li>With refreshVersions, you are done in <strong>10 seconds</strong>!</li>
+</ul>
+<p><a href="https://github.com/LouisCAD/kotlin-libraries-playground/pull/69">See benchmarks here.</a></p>
+<h2 id="add-dependencies-quickly">Add dependencies quickly!<a class="headerlink" href="#add-dependencies-quickly" title="Permanent link">&para;</a></h2>
+<p>gradle refreshVersions provides read-to-use organized dependency notations for popular libraries.</p>
+<p><img alt="" src="img/dependencies_constants_autocomplete_2.png" /></p>
+<p>Read more: <a href="https://jmfayard.github.io/refreshVersions/add-dependencies/">Add Dependencies</a></p>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Gradle 6.3+</li>
+<li>IntelliJ IDEA or Android Studio</li>
+</ul>
+<h2 id="try-it-out-with-zero-setup">Try it out with zero setup!<a class="headerlink" href="#try-it-out-with-zero-setup" title="Permanent link">&para;</a></h2>
+<p>The simplest way to try out gradle refreshVersions is with our official sample,
+the <a href="https://github.com/LouisCAD/kotlin-libraries-playground"><strong>Kotlin libraries Playground</strong></a>!</p>
+<p>Everything is pre-configured here, so just open the project in IntelliJ and start adding and upgrading dependencies.</p>
+<p><a href="https://github.com/LouisCAD/kotlin-libraries-playground"><img alt="" src="img/kotlin-libraries-playground.png" /></a></p>
+<p><em>Warning: You may also learn a ton of things about Kotlin libraries in the process!</em></p>
+<h2 id="funding">Funding ❤️<a class="headerlink" href="#funding" title="Permanent link">&para;</a></h2>
+<p>We hope this open source project saves you a lot of time!</p>
+<p>It is maintained by its authors, Jean-Michel Fayard and Louis CAD.</p>
+<p>You can <strong>buy us more time</strong> by becoming our sponsors:</p>
+<ul>
+<li>💝 <a href="https://github.com/sponsors/LouisCAD">Louis CAD GitHub Sponsors page</a></li>
+<li>💝 <a href="https://github.com/sponsors/jmfayard">Jean-Michel GitHub Sponsors page</a></li>
+</ul>
+<p>We&rsquo;re very grateful to you and <a href="https://github.com/jmfayard/refreshVersions/blob/main/SPONSORS.md">our existing sponsors</a>, thank you! ❤️❤️</p>
+<h2 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
+<p>If you only want to submit an issue, see this <a href="contributing/submitting-issues/">quick guide</a> to maximize the likelihood of it being eventually resolved.</p>
+<p>If you want to submit a successful PR, start by reading <a href="contributing/before-you-contribute/">our guide</a>.</p>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
+<p>This project is provided under the MIT License.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+      
+        
+        <a href="setup/" class="md-footer__link md-footer__link--next" aria-label="Next: Setup" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Setup
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 jmfayard
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.b0710199.min.js", "version": {"gradle": 6.9, "refreshVersions": "0.10.1", "snapshot": "0.10.1-SNAPSHOT"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.76f349be.min.js"></script>
+      
+    
+  </body>
+</html>
