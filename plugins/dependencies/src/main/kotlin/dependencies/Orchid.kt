@@ -1,7 +1,7 @@
 @file:Suppress("PackageDirectoryMismatch", "SpellCheckingInspection", "unused")
 
+import de.fayard.refreshVersions.core.internal.DependencyGroup
 import org.gradle.api.Incubating
-import org.gradle.kotlin.dsl.IsNotADependency
 
 @Incubating
 /**
@@ -17,46 +17,52 @@ import org.gradle.kotlin.dsl.IsNotADependency
  *
  * GitHub page: [orchidhq/Orchid](https://github.com/orchidhq/Orchid)
  */
-object Orchid {
+object Orchid : DependencyGroup(
+    group = "io.github.javaeden.orchid",
+    rawRule = """
+        io.github.javaeden.orchid:*
+                           ^^^^^^
+    """.trimIndent()
+) {
 
     private const val groupId = "io.github.javaeden.orchid"
 
-    const val core = "$groupId:OrchidCore:_"
-    const val test = "$groupId:OrchidTest:_"
+    val core = module("OrchidCore")
+    val test = module("OrchidTest")
 
     /**
      * Official webpage: [orchid.run/plugins](https://orchid.run/plugins)
      */
     val plugins = Plugins
 
-    object Plugins : IsNotADependency {
-        const val changelog         = "$groupId:OrchidChangelog:_"
-        const val forms             = "$groupId:OrchidForms:_"
-        const val groovydoc         = "$groupId:OrchidGroovydoc:_"
-        const val javadoc           = "$groupId:OrchidJavadoc:_"
-        const val kotlindoc         = "$groupId:OrchidKotlindoc:_"
-        const val kss               = "$groupId:OrchidKSS:_"
-        const val netlifyCMS        = "$groupId:OrchidNetlifyCMS:_"
-        const val pages             = "$groupId:OrchidPages:_"
-        const val pluginDocs        = "$groupId:OrchidPluginDocs:_"
-        const val posts             = "$groupId:OrchidPosts:_"
-        const val presentations     = "$groupId:OrchidPresentations:_"
-        const val search            = "$groupId:OrchidSearch:_"
-        const val sourceDoc         = "$groupId:OrchidSourceDoc:_"
-        const val swagger           = "$groupId:OrchidSwagger:_"
-        const val swiftdoc          = "$groupId:OrchidSwiftdoc:_"
-        const val taxonomies        = "$groupId:OrchidTaxonomies:_"
-        const val wiki              = "$groupId:OrchidWiki:_"
-        const val asciidoc          = "$groupId:OrchidAsciidoc:_"
-        const val bible             = "$groupId:OrchidBible:_"
-        const val diagrams          = "$groupId:OrchidDiagrams:_"
-        const val syntaxHighlighter = "$groupId:OrchidSyntaxHighlighter:_"
-        const val writersBlocks     = "$groupId:OrchidWritersBlocks:_"
-        const val azure             = "$groupId:OrchidAzure:_"
-        const val bitbucket         = "$groupId:OrchidBitbucket:_"
-        const val github            = "$groupId:OrchidGithub:_"
-        const val gitlab            = "$groupId:OrchidGitlab:_"
-        const val netlify           = "$groupId:OrchidNetlify:_"
+    object Plugins : DependencyGroup(group = "io.github.javaeden.orchid") {
+        val changelog = module("OrchidChangelog")
+        val forms = module("OrchidForms")
+        val groovydoc = module("OrchidGroovydoc")
+        val javadoc = module("OrchidJavadoc")
+        val kotlindoc = module("OrchidKotlindoc")
+        val kss = module("OrchidKSS")
+        val netlifyCMS = module("OrchidNetlifyCMS")
+        val pages = module("OrchidPages")
+        val pluginDocs = module("OrchidPluginDocs")
+        val posts = module("OrchidPosts")
+        val presentations = module("OrchidPresentations")
+        val search = module("OrchidSearch")
+        val sourceDoc = module("OrchidSourceDoc")
+        val swagger = module("OrchidSwagger")
+        val swiftdoc = module("OrchidSwiftdoc")
+        val taxonomies = module("OrchidTaxonomies")
+        val wiki = module("OrchidWiki")
+        val asciidoc = module("OrchidAsciidoc")
+        val bible = module("OrchidBible")
+        val diagrams = module("OrchidDiagrams")
+        val syntaxHighlighter = module("OrchidSyntaxHighlighter")
+        val writersBlocks = module("OrchidWritersBlocks")
+        val azure = module("OrchidAzure")
+        val bitbucket = module("OrchidBitbucket")
+        val github = module("OrchidGithub")
+        val gitlab = module("OrchidGitlab")
+        val netlify = module("OrchidNetlify")
     }
 
     /**
@@ -64,19 +70,19 @@ object Orchid {
      */
     val themes = Themes
 
-    object Themes : IsNotADependency {
-        const val bsDoc           = "$groupId:OrchidBsDoc:_"
-        const val copper          = "$groupId:OrchidCopper:_"
-        const val editorial       = "$groupId:OrchidEditorial:_"
-        const val futureImperfect = "$groupId:OrchidFutureImperfect:_"
+    object Themes : DependencyGroup(group = "io.github.javaeden.orchid") {
+        val bsDoc = module("OrchidBsDoc")
+        val copper = module("OrchidCopper")
+        val editorial = module("OrchidEditorial")
+        val futureImperfect = module("OrchidFutureImperfect")
     }
 
     val bundles = Bundles
 
-    object Bundles : IsNotADependency {
-        const val all          = "$groupId:OrchidAll:_"
-        const val blog         = "$groupId:OrchidBlog:_"
-        const val docs         = "$groupId:OrchidDocs:_"
-        const val languagePack = "$groupId:OrchidLanguagePack:_"
+    object Bundles : DependencyGroup(group = "io.github.javaeden.orchid") {
+        val all = module("OrchidAll")
+        val blog = module("OrchidBlog")
+        val docs = module("OrchidDocs")
+        val languagePack = module("OrchidLanguagePack")
     }
 }

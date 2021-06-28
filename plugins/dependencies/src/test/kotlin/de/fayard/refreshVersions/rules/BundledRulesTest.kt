@@ -1,11 +1,9 @@
 package de.fayard.refreshVersions.rules
 
 import de.fayard.refreshVersions.core.internal.ArtifactVersionKeyReader
-import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.Disabled
-import org.junit.jupiter.api.DynamicTest
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestFactory
+import de.fayard.refreshVersions.core.internal.DependencyGroup
+import dependencies.ALL_DEPENDENCIES_NOTATIONS
+import org.junit.jupiter.api.*
 import testutils.junit.dynamicTest
 import java.io.File
 
@@ -28,6 +26,17 @@ class BundledRulesTest {
                 }
             }
         }
+    }
+
+    @Test
+    fun `generate rules file for dependency groups`() {
+        ALL_DEPENDENCIES_NOTATIONS
+        val file = rulesDir.resolve("dependency-groups-alias-rules.txt")
+        val content = DependencyGroup.ALL_RULES
+            .sorted()
+            .distinct()
+            .joinToString(separator = "\n\n")
+        file.writeText(content)
     }
 
     @Test

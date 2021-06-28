@@ -1,0 +1,8 @@
+io.github.javaeden.orchid:*
+                   ^^^^^^
+
+org.http4k:http4k-*
+    ^^^^^^
+
+org.kodein.di:kodein-di(-*)
+    ^^^^^^^^^
