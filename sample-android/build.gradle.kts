@@ -30,3 +30,7 @@ buildScan {
     setTermsOfServiceAgree("yes")
     publishAlways()
 }
+
+tasks.wrapper {
+    gradleVersion = "6.7.1"
+}

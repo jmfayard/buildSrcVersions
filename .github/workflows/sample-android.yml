@@ -30,11 +30,11 @@ jobs:
           arguments: check publishToMavenLocal --stacktrace
       - uses: eskatos/gradle-command-action@v1
         with:
-          wrapper-directory: sample-android
+          wrapper-directory: plugins
           build-root-directory: sample-android
           arguments: refreshVersions --stacktrace
       - uses: eskatos/gradle-command-action@v1
         with:
-          wrapper-directory: sample-android
+          wrapper-directory: plugins
           build-root-directory: sample-android
           arguments: check --stacktrace

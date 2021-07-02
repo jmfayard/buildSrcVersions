@@ -39,16 +39,16 @@ jobs:
           arguments: check publishToMavenLocal --stacktrace
       - uses: eskatos/gradle-command-action@v1
         with:
-          wrapper-directory: sample-kotlin
+          wrapper-directory: plugins
           build-root-directory: sample-kotlin
           arguments: check --stacktrace
       - uses: eskatos/gradle-command-action@v1
         with:
-          wrapper-directory: sample-groovy
+          wrapper-directory: plugins
           build-root-directory: sample-groovy
           arguments: check --stacktrace
       - uses: eskatos/gradle-command-action@v1
         with:
-          wrapper-directory: sample-multi-modules
+          wrapper-directory: plugins
           build-root-directory: sample-multi-modules
           arguments: check --stacktrace

@@ -25,3 +25,7 @@ dependencies {
 
 println("The version for artifact org.jetbrains:annotations:_ is " + versionFor("org.jetbrains:annotations:_"))
 println("The version for version key version.com.google.guava..guava is " + versionFor("version.com.google.guava..guava"))
+
+tasks.wrapper {
+    gradleVersion = "6.7.1"
+}
