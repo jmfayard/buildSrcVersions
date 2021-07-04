@@ -16,7 +16,7 @@ internal object LegacyBoostrapUpdatesFinder {
         httpClient: OkHttpClient,
         resultMode: VersionCandidatesResultMode
     ): DependencyWithVersionCandidates {
-        val moduleId = ModuleId(group = "de.fayard.refreshVersions", name = "refreshVersions")
+        val moduleId = ModuleId.Maven(group = "de.fayard.refreshVersions", name = "refreshVersions")
 
         val versionsFetchers = RefreshVersionsConfigHolder.settings.getDependencyVersionFetchers(
             httpClient = httpClient,

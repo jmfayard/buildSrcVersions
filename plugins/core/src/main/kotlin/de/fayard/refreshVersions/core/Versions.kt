@@ -32,7 +32,7 @@ private fun retrieveVersionFor(dependencyNotationOrVersionKey: CharSequence): St
             }
             dependencyNotationOrVersionKey.toString().let {
                 getVersionPropertyName(
-                    moduleId = ModuleId(
+                    moduleId = ModuleId.Maven(
                         group = it.substringBefore(':'),
                         name = it.substringBeforeLast(':').substringAfter(':')
                     ),

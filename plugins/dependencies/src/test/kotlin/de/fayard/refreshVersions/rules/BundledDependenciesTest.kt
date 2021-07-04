@@ -37,14 +37,14 @@ class BundledDependenciesTest {
                 .filter { dependencyMapping ->
                     "${dependencyMapping.group}:${dependencyMapping.artifact}" !in validatedDependencyMapping
                 }.map { dependencyMapping ->
-                    dependencyMapping.group to dependencyMapping.artifact
+                    ModuleId.Maven(dependencyMapping.group, dependencyMapping.artifact)
                 }
                 .distinct()
-                .onEach { (group, name) ->
+                .onEach { mavenModuleId ->
                     launch {
                         getVersionCandidates(
                             httpClient = defaultHttpClient,
-                            moduleId = ModuleId(group, name),
+                            mavenModuleId = mavenModuleId,
                             repoUrls = reposUrls,
                             currentVersion = Version("")
                         )

@@ -52,3 +52,8 @@ jobs:
           wrapper-directory: sample-multi-modules
           build-root-directory: sample-multi-modules
           arguments: check --stacktrace
+      - uses: eskatos/gradle-command-action@v1
+        with:
+          wrapper-directory: sample-kotlin-js
+          build-root-directory: sample-kotlin-js
+          arguments: check --stacktrace

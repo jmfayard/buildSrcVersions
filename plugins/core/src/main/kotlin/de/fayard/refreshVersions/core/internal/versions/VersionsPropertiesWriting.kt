@@ -2,7 +2,6 @@ package de.fayard.refreshVersions.core.internal.versions
 
 import de.fayard.refreshVersions.core.RefreshVersionsCorePlugin
 import de.fayard.refreshVersions.core.Version
-import de.fayard.refreshVersions.core.extensions.gradle.toModuleIdentifier
 import de.fayard.refreshVersions.core.internal.DependencyWithVersionCandidates
 import de.fayard.refreshVersions.core.internal.InternalRefreshVersionsApi
 import de.fayard.refreshVersions.core.internal.RefreshVersionsConfigHolder
@@ -11,12 +10,12 @@ import de.fayard.refreshVersions.core.internal.isAVersionAlias
 import de.fayard.refreshVersions.core.internal.versions.VersionsPropertiesModel.Companion.availableComment
 import de.fayard.refreshVersions.core.internal.versions.VersionsPropertiesModel.Section.Comment
 import de.fayard.refreshVersions.core.internal.versions.VersionsPropertiesModel.Section.VersionEntry
-import org.gradle.api.artifacts.ExternalDependency
+import org.gradle.api.artifacts.Dependency
 import java.io.File
 
-internal fun writeNewEntriesInVersionProperties(newEntries: Map<String, ExternalDependency>) {
+internal fun writeNewEntriesInVersionProperties(newEntries: Map<String, Dependency>) {
     VersionsPropertiesModel.update { model ->
-        val newSections = newEntries.map { (key, d: ExternalDependency) ->
+        val newSections = newEntries.map { (key, d: Dependency) ->
             VersionEntry(
                 key = key,
                 currentVersion = d.version!!,
@@ -33,7 +32,7 @@ internal fun VersionsPropertiesModel.Companion.writeWithNewVersions(
     val versionKeyReader = RefreshVersionsConfigHolder.versionKeyReader
 
     val candidatesMap = dependenciesWithLastVersion.associateBy {
-        getVersionPropertyName(it.moduleId.toModuleIdentifier(), versionKeyReader)
+        getVersionPropertyName(it.moduleId, versionKeyReader)
     }
 
     update { model ->

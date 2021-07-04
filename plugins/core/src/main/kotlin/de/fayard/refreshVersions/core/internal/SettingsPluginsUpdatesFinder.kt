@@ -39,7 +39,7 @@ internal object SettingsPluginsUpdatesFinder {
                 rootProjectSettings.pluginManagement.repositories.asSequence()
                     .filterIsInstance<MavenArtifactRepository>()
                     .mapNotNull { repo ->
-                        val fetcher = DependencyVersionsFetcher(httpClient, dependency, repo)
+                        val fetcher = DependencyVersionsFetcher.forMaven(httpClient, dependency, repo)
                             ?: return@mapNotNull null
                         dependency to fetcher
                     }
@@ -48,7 +48,7 @@ internal object SettingsPluginsUpdatesFinder {
                     buildSrcSettings.pluginManagement.repositories.asSequence()
                         .filterIsInstance<MavenArtifactRepository>()
                         .mapNotNull { repo ->
-                            val fetcher = DependencyVersionsFetcher(httpClient, dependency, repo)
+                            val fetcher = DependencyVersionsFetcher.forMaven(httpClient, dependency, repo)
                                 ?: return@mapNotNull null
                             dependency to fetcher
                         }

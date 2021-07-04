@@ -1,21 +1,19 @@
 package de.fayard.refreshVersions.core.extensions.gradle
 
 import de.fayard.refreshVersions.core.ModuleId
+import de.fayard.refreshVersions.core.internal.InternalRefreshVersionsApi
 import org.gradle.api.artifacts.Dependency
-import org.gradle.api.artifacts.ModuleIdentifier
+import org.gradle.api.artifacts.ExternalDependency
 
-internal val Dependency.moduleId: ModuleId get() = ModuleId(group, name)
+@InternalRefreshVersionsApi
+fun Dependency.moduleId(): ModuleId? = when {
+    this is ExternalDependency -> ModuleId.Maven(group, name)
+    this::class.simpleName == "NpmDependency" -> npmModuleId()
+    else -> null
+}
 
-internal val Dependency.moduleIdentifier: ModuleIdentifier?
-    get() {
-        val group = group ?: return null
-        val name = name
-        return object : ModuleIdentifier {
-            override fun getGroup(): String = group
-            override fun getName(): String = name
-            override fun toString(): String = "${getGroup()}:${getName()}"
-        }
-    }
-
-internal val Dependency.isGradlePlugin: Boolean
-    get() = name.endsWith(".gradle.plugin")
+internal fun Dependency.npmModuleId(): ModuleId.Npm {
+    val scope: String? = name.substringBefore('/').substringAfter('@').takeUnless { it == name }
+    val nameWithoutScope = name.substringAfter('/')
+    return ModuleId.Npm(scope, nameWithoutScope)
+}

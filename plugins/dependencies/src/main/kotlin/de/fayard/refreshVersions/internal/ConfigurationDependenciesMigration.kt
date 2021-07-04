@@ -1,11 +1,13 @@
 package de.fayard.refreshVersions.internal
 
+import de.fayard.refreshVersions.core.ModuleId
+import de.fayard.refreshVersions.core.extensions.gradle.moduleId
 import de.fayard.refreshVersions.core.internal.*
 import de.fayard.refreshVersions.core.internal.cli.AnsiColor
 import de.fayard.refreshVersions.core.internal.cli.CliGenericUi
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
-import org.gradle.api.artifacts.ExternalDependency
+import org.gradle.api.artifacts.Dependency
 import org.gradle.api.artifacts.ModuleIdentifier
 
 internal fun runConfigurationDependenciesMigration(
@@ -14,7 +16,7 @@ internal fun runConfigurationDependenciesMigration(
     configuration: Configuration
 ) {
     configuration.dependencies.forEach { dependency ->
-        if (dependency !is ExternalDependency) return@forEach
+        if (dependency !is Dependency) return@forEach
         project.attemptDependencyMigration(versionsMap, dependency)
     }
 }
@@ -23,18 +25,19 @@ private val artifactNameToConstantMapping: List<DependencyMapping> by lazy {
     getArtifactNameToConstantMapping()
 }
 
-private fun DependencyMapping.matches(dependency: ExternalDependency): Boolean {
+private fun DependencyMapping.matches(dependency: Dependency): Boolean {
     return group == dependency.group && artifact == dependency.name
 }
 
 private fun Project.attemptDependencyMigration(
     versionsMap: Map<String, String>,
-    dependency: ExternalDependency
+    dependency: Dependency
 ) {
     val versionKeyReader = RefreshVersionsConfigHolder.versionKeyReader
 
     if (dependency.hasHardcodedVersion(versionsMap, versionKeyReader).not()) return
     val currentVersion = dependency.version ?: return
+    val moduleId = dependency.moduleId() ?: return
 
     val availableDependenciesConstants = artifactNameToConstantMapping.mapNotNull { dependencyMapping ->
         if (dependencyMapping.matches(dependency)) {
@@ -42,14 +45,14 @@ private fun Project.attemptDependencyMigration(
         } else null
     }
     val done: Boolean = when (availableDependenciesConstants.size) {
-        0 -> offerReplacingHardcodedVersionWithPlaceholder(dependency.module)
+        0 -> offerReplacingHardcodedVersionWithPlaceholder(moduleId)
         else -> offerReplacingHardcodedVersionWithConstantOrPlaceholder(
-            moduleIdentifier = dependency.module,
+            moduleId = moduleId,
             constants = availableDependenciesConstants
         )
     }
     if (done.not()) return
-    val versionKey = getVersionPropertyName(dependency.module, versionKeyReader)
+    val versionKey = getVersionPropertyName(moduleId, versionKeyReader)
     writeCurrentVersionInProperties(
         versionKey = versionKey,
         currentVersion = currentVersion
@@ -57,10 +60,10 @@ private fun Project.attemptDependencyMigration(
     logAddedVersionsKey(versionKey)
 }
 
-private fun offerReplacingHardcodedVersionWithPlaceholder(moduleIdentifier: ModuleIdentifier): Boolean {
+private fun offerReplacingHardcodedVersionWithPlaceholder(moduleId: ModuleId): Boolean {
     val genericUi = CliGenericUi()
-    val group = moduleIdentifier.group
-    val name = moduleIdentifier.name
+    val group = moduleId.group
+    val name = moduleId.name
     val stringLiteralWithVersionPlaceholder = "\"$group:$name:_\""
     println()
     println("    $stringLiteralWithVersionPlaceholder")
@@ -73,13 +76,13 @@ private fun offerReplacingHardcodedVersionWithPlaceholder(moduleIdentifier: Modu
 }
 
 private fun offerReplacingHardcodedVersionWithConstantOrPlaceholder(
-    moduleIdentifier: ModuleIdentifier,
+    moduleId: ModuleId,
     constants: List<String>
 ): Boolean {
     require(constants.isNotEmpty())
     val genericUi = CliGenericUi()
-    val group = moduleIdentifier.group
-    val name = moduleIdentifier.name
+    val group = moduleId.group
+    val name = moduleId.name
     val stringLiteralWithVersionPlaceholder = "\"$group:$name:_\""
     println()
     (constants + stringLiteralWithVersionPlaceholder).forEach {

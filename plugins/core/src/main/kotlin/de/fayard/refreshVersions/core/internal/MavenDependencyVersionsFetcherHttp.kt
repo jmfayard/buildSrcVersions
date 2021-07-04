@@ -9,7 +9,7 @@ import retrofit2.Response
 
 internal class MavenDependencyVersionsFetcherHttp(
     private val httpClient: OkHttpClient,
-    moduleId: ModuleId,
+    moduleId: ModuleId.Maven,
     val repoUrl: String,
     repoAuthorization: String?
 ) : MavenDependencyVersionsFetcher(

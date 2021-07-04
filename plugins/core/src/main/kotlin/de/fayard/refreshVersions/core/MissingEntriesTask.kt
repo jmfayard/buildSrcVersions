@@ -106,7 +106,10 @@ internal fun findMissingEntries(
                     it.hasHardcodedVersion(versionsMap, versionKeyReader) && it.version != null
                 }
                 .map { dependency: ExternalDependency ->
-                    val versionKey = getVersionPropertyName(dependency.module, versionKeyReader)
+                    val versionKey = getVersionPropertyName(
+                        ModuleId.Maven(group = dependency.group!!, name = dependency.name),
+                        versionKeyReader
+                    )
                     versionKey to dependency
                 }
         }

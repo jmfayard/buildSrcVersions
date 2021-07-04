@@ -36,7 +36,8 @@ enum class FeatureFlag(private val enabledByDefault: Boolean?) {
     // Instead, mark it as deprecated, like this: @Deprecated("your message here")
 
     GRADLE_UPDATES(enabledByDefault = true),
-    LIBS(enabledByDefault = false)
+    LIBS(enabledByDefault = false),
+    NPM_IMPLICIT_RANGE(enabledByDefault = false)
     ;
 
     companion object {
