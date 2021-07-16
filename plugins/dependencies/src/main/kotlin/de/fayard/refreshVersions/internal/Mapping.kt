@@ -6,6 +6,7 @@ import CashApp
 import Firebase
 import Google
 import JakeWharton
+import Koin
 import Kotlin
 import KotlinX
 import Ktor
@@ -56,7 +57,8 @@ internal fun getArtifactNameToConstantMapping(excludeBomDependencies: Boolean = 
         Square,
         Ktor,
         Testing,
-        COIL
+        COIL,
+        Koin
     ).flatMap { objectInstance ->
         getArtifactNameToConstantMappingFromObject(
             objectInstance,

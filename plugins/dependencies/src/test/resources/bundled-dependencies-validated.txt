@@ -510,6 +510,16 @@ io.coil-kt:coil-base
 io.coil-kt:coil-gif
 io.coil-kt:coil-svg
 io.coil-kt:coil-video
+io.insert-koin:koin-android
+io.insert-koin:koin-android-compat
+io.insert-koin:koin-androidx-compose
+io.insert-koin:koin-androidx-workmanager
+io.insert-koin:koin-core
+io.insert-koin:koin-ktor
+io.insert-koin:koin-logger-slf4j
+io.insert-koin:koin-test
+io.insert-koin:koin-test-junit4
+io.insert-koin:koin-test-junit5
 io.kotest.extensions:kotest-extensions-allure
 io.kotest.extensions:kotest-extensions-embedded-kafka
 io.kotest.extensions:kotest-extensions-gherkin
