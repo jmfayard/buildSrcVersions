@@ -9,6 +9,7 @@ import JakeWharton
 import Kotlin
 import KotlinX
 import Ktor
+import MultiplatformSettings
 import Splitties
 import Square
 import Testing
@@ -56,7 +57,8 @@ internal fun getArtifactNameToConstantMapping(excludeBomDependencies: Boolean = 
         Square,
         Ktor,
         Testing,
-        COIL
+        COIL,
+        MultiplatformSettings
     ).flatMap { objectInstance ->
         getArtifactNameToConstantMappingFromObject(
             objectInstance,

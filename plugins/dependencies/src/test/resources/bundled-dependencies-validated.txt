@@ -461,6 +461,13 @@ com.louiscad.splitties:splitties-views-selectable
 com.louiscad.splitties:splitties-views-selectable-appcompat
 com.louiscad.splitties:splitties-views-selectable-constraintlayout
 com.nhaarman.mockitokotlin2:mockito-kotlin
+com.russhwolf:multiplatform-settings
+com.russhwolf:multiplatform-settings-coroutines
+com.russhwolf:multiplatform-settings-coroutines-native-mt
+com.russhwolf:multiplatform-settings-datastore
+com.russhwolf:multiplatform-settings-no-arg
+com.russhwolf:multiplatform-settings-serialization
+com.russhwolf:multiplatform-settings-test
 com.squareup.leakcanary:leakcanary-android
 com.squareup.leakcanary:leakcanary-android-instrumentation
 com.squareup.leakcanary:leakcanary-android-process
