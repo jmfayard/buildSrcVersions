@@ -12,6 +12,7 @@ import Ktor
 import Splitties
 import Square
 import Testing
+import Touchlab
 import dependencies.DependencyNotationAndGroup
 import org.gradle.api.artifacts.ModuleIdentifier
 import java.lang.reflect.Field
@@ -56,7 +57,8 @@ internal fun getArtifactNameToConstantMapping(excludeBomDependencies: Boolean = 
         Square,
         Ktor,
         Testing,
-        COIL
+        COIL,
+        Touchlab
     ).flatMap { objectInstance ->
         getArtifactNameToConstantMappingFromObject(
             objectInstance,

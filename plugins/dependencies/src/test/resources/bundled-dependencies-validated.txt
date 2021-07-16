@@ -277,6 +277,10 @@ app.cash.copper:copper-flow
 app.cash.copper:copper-rx2
 app.cash.copper:copper-rx3
 app.cash.turbine:turbine
+co.touchlab:stately-common
+co.touchlab:stately-concurrency
+co.touchlab:stately-iso-collections
+co.touchlab:stately-isolate
 com.google.accompanist:accompanist-appcompat-theme
 com.google.accompanist:accompanist-coil
 com.google.accompanist:accompanist-flowlayout
